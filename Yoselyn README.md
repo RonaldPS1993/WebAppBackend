@@ -1,5 +1,5 @@
 Install first:
-To intall mysql database:
+To install mysql database:
 npm mysql
 
 Install this for node_modules folder and the package-lock.json 
@@ -13,3 +13,6 @@ npm install --save-dev nodemon
 
 Install this for hashing of password
 npm install bcrypt
+
+Install json web token
+npm i jsonwebtoken
