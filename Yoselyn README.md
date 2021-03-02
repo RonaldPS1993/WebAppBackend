@@ -2,7 +2,7 @@
 
 **Install first:**
 To install mysql database:
-npm mysql
+npm install mysql
 
 **Install this for node_modules folder and the package-lock.json:**
 npm install express 
