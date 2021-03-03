@@ -12,6 +12,10 @@ const userRouter = require("./api/users/user.router");
 app.use(express.json());
 app.use("/api/users", userRouter);
 
+//bookdetails route
+const bookDetailsRoute = require("./api/bookDetails/bookDetails.router");
+app.use('/bookDetails', bookDetailsRoute);
+
 app.listen(process.env.APP_PORT, () => {
   console.log("Server up and running on PORT : ", process.env.APP_PORT);
 });
