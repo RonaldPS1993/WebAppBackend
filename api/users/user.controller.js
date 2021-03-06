@@ -126,7 +126,7 @@ module.exports = {
             if (result) {
                 results.passwords = undefined;
                 const jsontoken = sign({ result: results}, process.env.JWT_SECRET,{
-                    expiresIn: "1h"
+                    expiresIn: "90d"
                 });
                 return res.json({
                 success: 1,
