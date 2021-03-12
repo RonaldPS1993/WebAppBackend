@@ -6,7 +6,8 @@ const {
 module.exports = {
     createWishlist: (req,res) => {
         const body = req.body;
-        createWish(body, (error,results)=> {
+        const customer_id = req.params.customer_id;
+        createWish(customer_id,body, (error,results)=> {
             if(error){
                 console.log(error);
                 return res.status(500).json({
