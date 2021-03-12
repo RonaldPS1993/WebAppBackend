@@ -5,7 +5,7 @@ const {
     getUsers, 
     updateUser, 
     deleteUser,
-    getUserByUserEmail
+    getUserByUsername
 } = require("./user.service");
 
 //methods used for encrypting passwords
@@ -112,7 +112,7 @@ module.exports = {
     },
     login: (req, res) => {
         const body = req.body;
-        getUserByUserEmail(body.email, (err,results) => {
+        getUserByUsername(body.customer_id, (err,results) => {
             if(err) {
                 console.log(err);
             }
