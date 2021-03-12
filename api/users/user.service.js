@@ -4,14 +4,14 @@ const pool = require("../../config/database");
 module.exports = {
     create: (data, callBack) => {
         pool.query(
-            'INSERT INTO customer_profile(cust_first_name, cust_last_name, passwords, phone_number, nickname, email) VALUES(?,?,?,?,?,?)',
+            'INSERT INTO customer_profile(customer_id, cust_first_name, cust_last_name, passwords, phone_number, nickname) VALUES(?,?,?,?,?,?)',
             [
+                data.customer_id,
                 data.cust_first_name,
                 data.cust_last_name,
                 data.passwords,
                 data.phone_number,
                 data.nickname,
-                data.email
             ],
             (error, results, fields) => {
                 if (error){
@@ -23,7 +23,7 @@ module.exports = {
     },
     getUsers: callBack => {
         pool.query(
-            'SELECT customer_id, cust_first_name, cust_last_name, passwords, phone_number, nickname, email FROM customer_profile',
+            'SELECT customer_id, cust_first_name, cust_last_name, passwords, phone_number, nickname FROM customer_profile',
             [],
             (error, results, fields) => {
                 if (error) {
@@ -35,7 +35,7 @@ module.exports = {
     },
     getUserByUserId: (id, callBack) => {
         pool.query(
-            'SELECT customer_id, cust_first_name, cust_last_name, passwords, phone_number, nickname, email from customer_profile WHERE customer_id = ?',
+            'SELECT customer_id, cust_first_name, cust_last_name, passwords, phone_number, nickname from customer_profile WHERE customer_id = ?',
             [id],
             (error, results, fields) => {
                 if(error) {
@@ -47,14 +47,13 @@ module.exports = {
     },
     updateUser: (data, callBack) => {
         pool.query(
-            'UPDATE customer_profile set cust_first_name=?, cust_last_name=?, passwords=?, phone_number=?, nickname=?, email=? WHERE customer_id = ?',
+            'UPDATE customer_profile set cust_first_name=?, cust_last_name=?, passwords=?, phone_number=?, nickname=? WHERE customer_id = ?',
             [
                 data.cust_first_name,
                 data.cust_last_name,
                 data.passwords,
                 data.phone_number,
                 data.nickname,
-                data.email,
                 data.customer_id
             ],
             (error, results, fields) => {
@@ -77,10 +76,10 @@ module.exports = {
             }
         );
     },
-    getUserByUserEmail: (email, callBack) => {
+    getUserByUsername: (customer_id, callBack) => {
         pool.query(
-            'SELECT * FROM customer_profile WHERE email = ?',
-            [email],
+            'SELECT * FROM customer_profile WHERE customer_id = ?',
+            [customer_id],
             (error, results, fields) => {
                 if (error) {
                     callBack(error);

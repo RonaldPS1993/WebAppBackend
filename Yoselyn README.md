@@ -2,7 +2,7 @@
 
 **Install first:**
 To install mysql database:
-npm mysql
+npm install mysql
 
 **Install this for node_modules folder and the package-lock.json:**
 npm install express 
@@ -18,3 +18,9 @@ npm install bcrypt
 
 **Install json web token:**
 npm i jsonwebtoken
+
+**Install body-parser middleware for parsing incoming request bodies to JSON**
+npm install body-parser
+
+**Install cors a package for providing middleware that can be used to enable CORS with various options**
+npm install cors
