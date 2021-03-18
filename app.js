@@ -14,14 +14,11 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
 
-<<<<<<< HEAD
 //Imported router from wishlits router
 const wishlistRouter = require("./api/wishlist/wishlist.router");
 
 //Routes for API
-=======
 //Middleware
->>>>>>> master
 app.use(express.json());
 app.use(cors({
   origin: ["http://localhost:3000"],

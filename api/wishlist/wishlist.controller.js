@@ -2,12 +2,13 @@ const {
     createWish,
     addBooksToWish
  } = require("./wishlist.service");
-
+const { decrypt } = require("../../auth/token_validation");
 
 module.exports = {
     createWishlist: (req,res) => {
-        const body = req.body;
-        const customer_id = req.params.customer_id;
+        const body = req.body;      
+        const customer_id = decrypt(req).result.customer_id;
+        
         createWish(customer_id,body, (error,results)=> {
             if(error){
                 console.log(error);

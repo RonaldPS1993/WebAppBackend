@@ -4,9 +4,9 @@ module.exports = {
     createWish: (id,data,callBack) =>{
       pool.query(
           `INSERT INTO book_list(cart_status,cart_total,type_list,cart_name,customer_id)
-          select "active",0,"wishlist",?,?
-          from  dual
-          where (select count(*)  FROM book_list  WHERE customer_id = ?) < 3;
+          SELECT "active",0,"wishlist",?,?
+          FROM  dual
+          WHERE (select count(*)  FROM book_list  WHERE customer_id = ?) < 3;
           `,
           [
               data.cart_name,
