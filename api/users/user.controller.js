@@ -5,7 +5,8 @@ const {
     getUsers, 
     updateUser, 
     deleteUser,
-    getUserByUsername
+    getUserByUsername,
+    createAddress
 } = require("./user.service");
 
 //methods used for encrypting passwords
@@ -23,12 +24,13 @@ module.exports = {
                 console.log(err);
                 return res.status(500).json({
                     success: 0,
-                    message: "Database connection error"
+                    message: "Email Already Exists"
                 });
             }
             return res.status(200).json({
                 success: 1,
-                data: results
+                data: results,
+                message: "Successfuly Created Account"
             });
         });
     },
@@ -139,6 +141,24 @@ module.exports = {
                     data: "Invalid email or password"
                 });
             }
+        });
+    },
+
+    createAddress:(req,res) => {
+        const body = req.body;
+        createAddress(body, (error,results)=> {
+            if(error){
+                console.log(error);
+                return res.status(500).json({
+                    success : 0,
+                    message : "Error creating address"
+                });
+            }
+            return res.status(200).json({
+                success : 1,
+                data: results,
+                message: "Successfuly Added Address"
+            });
         });
     }
 };

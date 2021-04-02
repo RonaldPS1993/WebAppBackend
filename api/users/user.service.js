@@ -87,5 +87,25 @@ module.exports = {
                 return callBack(null, results[0]);
             }
         );
-    }
+    },
+
+    createAddress: (data, callBack) => {
+        pool.query(
+            'INSERT INTO customer_address(address, city, state, zip, customer_id) VALUES (?,?,?,?, (SELECT customer_id FROM customer_profile WHERE customer_id = ? ))',
+            [
+                data.address,
+                data.city,
+                data.state,
+                data.zip,
+                data.customer_id
+            ],
+            (error, results, fields) => {
+                if (error){
+                return callBack(error);
+                }
+                return callBack(null, results);
+            }
+        );
+    },
+    
 };
