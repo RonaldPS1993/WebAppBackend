@@ -30,8 +30,28 @@ app.use(bodyParser.json());
 //Routes for API
 app.use("/api/users", userRouter);
 
+<<<<<<< HEAD
+//Handling CORS errors
+app.use((req,res,next)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  res.header(
+  "Access-Control-Allow-Headers", 
+  "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  if(req.method === 'OPTIONS'){
+    res.header('Access-Control-Allow-Methods','PUT, POST, PATCH, DELETE, GET');
+    return res.status(200).json({});
+  }
+  next();
+});
+//bookdetails route
+const bookDetailsRoute = require("./api/bookDetails/bookDetails.router");
+app.use('/bookDetails', bookDetailsRoute);
+
+=======
 
 //Start server
+>>>>>>> 7ee4c96634f621388ed6cddba970594c5bbe48d5
 app.listen(process.env.APP_PORT, () => {
   console.log("Server up and running on PORT : ", process.env.APP_PORT);
 });
