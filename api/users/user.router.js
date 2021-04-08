@@ -5,7 +5,8 @@ const {
     getUsers, 
     updateUser, 
     deleteUser,
-    login
+    login,
+    createAddress
 } = require("./user.controller");
 const router = require('express').Router();
 const { checkToken } = require("../../auth/token_validation");
@@ -17,6 +18,7 @@ router.get("/:customer_id", checkToken, getUserByUserId);
 router.patch("/", updateUser);
 router.delete("/", deleteUser);
 router.post("/login", login);
+router.post("/account", createAddress);
 
 
 module.exports = router;
