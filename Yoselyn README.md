@@ -1,16 +1,26 @@
-Yoselyn Installs 
+## Please install these packages 
 
-this will install the node_modules folder and the package-lock.json 
+**Install first:**
+To install mysql database:
+npm install mysql
+
+**Install this for node_modules folder and the package-lock.json:**
 npm install express 
 
-for the .env folder install dependency
+**Install this for the .env folder:**
 npm install dotenv
 
-To auto start server 
+**Install this to auto start server (*use rs to restart server*):**
 npm install --save-dev nodemon
 
-*so now you can type npm start to start server and to restart just type rs *
-
-
-for the hash password install
+**Install this for hashing of password:**
 npm install bcrypt
+
+**Install json web token:**
+npm i jsonwebtoken
+
+**Install body-parser middleware for parsing incoming request bodies to JSON**
+npm install body-parser
+
+**Install cors a package for providing middleware that can be used to enable CORS with various options**
+npm install cors
