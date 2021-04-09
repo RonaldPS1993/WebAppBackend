@@ -1,11 +1,15 @@
 //make all config file fro DB private
 require("dotenv").config();
 
+
+//preinstalled
 const express = require("express");
 const cors = require("cors");
 
 //Imported router from user router
 const userRouter = require("./api/users/user.router");
+const booksRouter = require("./api/book_browsing/books.router")
+//if any request comes it will pass this to above router
 
 //Set up express app
 const app = express();
@@ -29,8 +33,8 @@ app.use(bodyParser.json());
 
 //Routes for API
 app.use("/api/users", userRouter);
+app.use("/api/book_browsing", booksRouter);
 
-<<<<<<< HEAD
 //Handling CORS errors
 app.use((req,res,next)=>{
   res.header('Access-Control-Allow-Origin','*');
@@ -48,10 +52,8 @@ app.use((req,res,next)=>{
 const bookDetailsRoute = require("./api/bookDetails/bookDetails.router");
 app.use('/bookDetails', bookDetailsRoute);
 
-=======
 
 //Start server
->>>>>>> 7ee4c96634f621388ed6cddba970594c5bbe48d5
 app.listen(process.env.APP_PORT, () => {
   console.log("Server up and running on PORT : ", process.env.APP_PORT);
 });
