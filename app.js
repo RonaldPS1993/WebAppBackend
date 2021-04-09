@@ -1,11 +1,15 @@
 //make all config file fro DB private
 require("dotenv").config();
 
+
+//preinstalled
 const express = require("express");
 const cors = require("cors");
 
 //Imported router from user router
 const userRouter = require("./api/users/user.router");
+const booksRouter = require("./api/book_browsing/books.router")
+//if any request comes it will pass this to above router
 
 //Set up express app
 const app = express();
@@ -33,7 +37,28 @@ app.use(bodyParser.json());
 
 //Routes for API
 app.use("/api/users", userRouter);
+<<<<<<< HEAD
 app.use("/api/wishlist",wishlistRouter);
+=======
+app.use("/api/book_browsing", booksRouter);
+
+//Handling CORS errors
+app.use((req,res,next)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  res.header(
+  "Access-Control-Allow-Headers", 
+  "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  if(req.method === 'OPTIONS'){
+    res.header('Access-Control-Allow-Methods','PUT, POST, PATCH, DELETE, GET');
+    return res.status(200).json({});
+  }
+  next();
+});
+//bookdetails route
+const bookDetailsRoute = require("./api/bookDetails/bookDetails.router");
+app.use('/bookDetails', bookDetailsRoute);
+>>>>>>> 4ebdd8ca09363ece8d81854b6d47a9593947df0a
 
 
 //Start server
