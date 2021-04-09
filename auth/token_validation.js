@@ -21,5 +21,17 @@ module.exports = {
                 message: "Access Denied. Unauthorized User"
             });
         }
+    },
+    decrypt: (req, res,next) => {
+        let token = req.get("authorization");
+        if(token){
+            token = token.slice(7);
+            return res = verify(token, process.env.JWT_SECRET);
+        } else {
+            res.json({
+                success: 0, 
+                message: "Access Denied. Unauthorized User"
+            });
+        }
     }
 };

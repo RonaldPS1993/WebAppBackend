@@ -18,6 +18,10 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
 
+//Imported router from wishlits router
+const wishlistRouter = require("./api/wishlist/wishlist.router");
+
+//Routes for API
 //Middleware
 app.use(express.json());
 app.use(cors({
@@ -33,6 +37,9 @@ app.use(bodyParser.json());
 
 //Routes for API
 app.use("/api/users", userRouter);
+<<<<<<< HEAD
+app.use("/api/wishlist",wishlistRouter);
+=======
 app.use("/api/book_browsing", booksRouter);
 
 //Handling CORS errors
@@ -51,6 +58,7 @@ app.use((req,res,next)=>{
 //bookdetails route
 const bookDetailsRoute = require("./api/bookDetails/bookDetails.router");
 app.use('/bookDetails', bookDetailsRoute);
+>>>>>>> 4ebdd8ca09363ece8d81854b6d47a9593947df0a
 
 
 //Start server
