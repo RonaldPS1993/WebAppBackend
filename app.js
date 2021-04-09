@@ -1,11 +1,15 @@
 //make all config file fro DB private
 require("dotenv").config();
 
+
+//preinstalled
 const express = require("express");
 const cors = require("cors");
 
 //Imported router from user router
 const userRouter = require("./api/users/user.router");
+const booksRouter = require("./api/book_browsing/books.router")
+//if any request comes it will pass this to above router
 
 //Set up express app
 const app = express();
@@ -29,6 +33,7 @@ app.use(bodyParser.json());
 
 //Routes for API
 app.use("/api/users", userRouter);
+app.use("/api/book_browsing", booksRouter);
 
 //Handling CORS errors
 app.use((req,res,next)=>{
