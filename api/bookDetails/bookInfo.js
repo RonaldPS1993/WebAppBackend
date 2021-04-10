@@ -6,7 +6,7 @@ let booksdb = {};
 //Gets the a books details based on the ISBN 
 booksdb.oneBook = (bookIsbn) => {
     return new Promise((resolve, reject)=>{
-        pool.query('SELECT book_title, book_description,genre_id,bio,total_rating FROM books WHERE book_isbn = ?',[bookIsbn], (err,bookInfo)=>{
+        pool.query('SELECT book_title, book_description,genre_id,bio,total_rating,book_isbn FROM books WHERE book_isbn = ?',[bookIsbn], (err,bookInfo)=>{
             if(err){
                 return reject(err);
             }
